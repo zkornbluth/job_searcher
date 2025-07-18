@@ -2,6 +2,7 @@ import jobspy
 import pandas as pd
 import strip_markdown.strip_markdown as strip_markdown # for job descriptions
 import csv
+from datetime import datetime
 
 EXCLUDE_TERMS_LIST = ["Senior", "Sr", "Lead", "Founding", "III", "IV", "Manager", "Staff", "Principal"]
 EXCLUDE_COMPANIES_LIST = ["Jobright.ai", "Jobs via Dice", "Lensa"]
@@ -133,4 +134,7 @@ jobs = pd.concat([jobs_nyc, jobs_ct, jobs_bos], axis=0)
 # output_jobs = jobs[['site', 'job_url', 'title', 'company', 'location', 'job_type', 'description', 'date_posted']].copy()
 output_jobs = jobs[['site', 'company', 'location', 'title', 'job_url', 'date_posted', 'job_type', 'description']].copy()
 
-output_jobs.to_csv("jobs.csv", quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False)
+now = datetime.now()
+timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
+
+output_jobs.to_csv(f"jobs_{timestamp}.csv", quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False)
