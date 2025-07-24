@@ -24,9 +24,9 @@ def scrape_and_filter_jobs(
     hours_old: int = None,
     enforce_annual_salary: bool = False,
     verbose: int = 0,
-    exclude_title_terms: list[str] | None = None,
     filter_state: str | None = None,
     exclude_companies: list[str] | None = None,
+    exclude_title_terms: list[str] | None = None,
 ) -> pd.DataFrame:
     '''
     Calls jobspy.scrape_jobs, then filters out results based on title terms, location, and company

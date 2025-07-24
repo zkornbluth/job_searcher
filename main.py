@@ -23,9 +23,9 @@ def run_my_searches() -> pd.DataFrame:
         country_indeed="USA",
         results_wanted=RESULTS_WANTED,
         linkedin_fetch_description=True,
-        exclude_title_terms=EXCLUDE_TERMS_LIST,
         filter_state="NY",
-        exclude_companies=EXCLUDE_COMPANIES_LIST
+        exclude_companies=EXCLUDE_COMPANIES_LIST,
+        exclude_title_terms=EXCLUDE_TERMS_LIST
     )
 
     jobs_ct = scrape_and_filter_jobs(
@@ -37,9 +37,9 @@ def run_my_searches() -> pd.DataFrame:
         country_indeed="USA",
         results_wanted=RESULTS_WANTED,
         linkedin_fetch_description=True,
-        exclude_title_terms=EXCLUDE_TERMS_LIST,
         filter_state="CT",
-        exclude_companies=EXCLUDE_COMPANIES_LIST
+        exclude_companies=EXCLUDE_COMPANIES_LIST,
+        exclude_title_terms=EXCLUDE_TERMS_LIST
     )
 
     jobs_bos = scrape_and_filter_jobs(
@@ -51,9 +51,9 @@ def run_my_searches() -> pd.DataFrame:
         country_indeed="USA",
         results_wanted=RESULTS_WANTED,
         linkedin_fetch_description=True,
-        exclude_title_terms=EXCLUDE_TERMS_LIST,
         filter_state="MA",
-        exclude_companies=EXCLUDE_COMPANIES_LIST
+        exclude_companies=EXCLUDE_COMPANIES_LIST,
+        exclude_title_terms=EXCLUDE_TERMS_LIST
     )
 
     jobs = pd.concat([jobs_nyc, jobs_ct, jobs_bos], axis=0)
