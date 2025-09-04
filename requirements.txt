@@ -1,0 +1,2 @@
+python-jobspy>=1.1.66
+pandas>=1.5

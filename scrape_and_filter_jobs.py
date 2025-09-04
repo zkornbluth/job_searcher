@@ -1,6 +1,5 @@
 import jobspy
 import pandas as pd
-import strip_markdown.strip_markdown as strip_markdown # for job descriptions
 from datetime import datetime
 import csv
 
@@ -74,8 +73,6 @@ def scrape_and_filter_jobs(
         # If after all checks, found_filter_reason is still False, add job to filtered_jobs
         if found_filter_reason == False:
             filtered_jobs.loc[len(filtered_jobs)] = job
-
-    filtered_jobs['description'] = filtered_jobs['description'].map(strip_markdown)
 
     print(f"Jobs found in {location}: {len(jobs)}")
     print(f"Removed {removed_for_state} jobs due to state")
