@@ -13,6 +13,9 @@ The console will display how many jobs the scraper found and how many were remov
 
 I've also created `export_jobs_to_csv` which takes a pandas DataFrame and outputs a timestamped CSV file for easier viewing of the job postings.
 
+### Coming Soon
+* Steps on how to set up the scraper to automatically run on a schedule (Mac)
+
 ## Getting Started
 ### 1. Install jobspy
 ```bash
