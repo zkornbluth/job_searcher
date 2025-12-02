@@ -1,3 +1,5 @@
 jobs*
 .DS_store
 __pycache__
+*.log
+seen_linkedin_ids.txt
