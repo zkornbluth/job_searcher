@@ -2,6 +2,8 @@ import jobspy
 import pandas as pd
 from datetime import datetime
 import csv
+import os
+import sys
 
 def scrape_and_filter_jobs(
     site_name: str | list[str] | jobspy.Site | list[jobspy.Site] | None = None,
@@ -65,7 +67,7 @@ def scrape_and_filter_jobs(
         # If no reason to filter this out yet, check if job.title contains any words in exclude_title_terms
         if found_filter_reason == False:
             for term in exclude_title_terms:
-                if term in job.title:
+                if term.lower() in job.title.lower():
                     found_filter_reason = True
                     removed_for_title += 1
                     break
@@ -82,7 +84,10 @@ def scrape_and_filter_jobs(
     print("")
     return filtered_jobs
 
-def export_jobs_to_csv(job_data: pd.DataFrame) -> None:
+def export_jobs_to_csv(job_data: pd.DataFrame) -> str:
     now = datetime.now()
     timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
-    job_data.to_csv(f"jobs_{timestamp}.csv", quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False)
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(script_dir, f"jobs_{timestamp}.csv")
+    job_data.to_csv(csv_path, quoting=csv.QUOTE_NONNUMERIC, escapechar="\\", index=False)
+    return csv_path
