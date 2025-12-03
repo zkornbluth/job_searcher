@@ -51,42 +51,7 @@ def run_my_searches(search_term: str, hours_old = 24) -> pd.DataFrame:
 
     EXCLUDE_TERMS_LIST = ["Senior", "Sr", "Lead", "Founding", "Founder", "Cofounder", "III", "IV", "Manager", "Staff", "Principal", "VP", "Director", 
                           "President", "Expert", "Distinguished", "CEO"]
-    EXCLUDE_COMPANIES_LIST = ["Jobright.ai", "Jobs via Dice", "Lensa", "Epic", "DataAnnotation", "Jobot", "Amazon.com", "Amazon", "C2R Ventures",
-                              "Amazon Web Services", "Amazon Web Services (AWS)", "Goliath Partners", "Andiamo", "Motion Recruitment", "MLabs", "VetJobs",
-                              "Jobs via eFinancialCareers", "TalentAlly", "Alivio Search Partners", "Centum Search", "Alpha Search Advisors", "Robert Walters",
-                              "RippleMatch", "Fudo Partners", "Acceler8 Talent", "mLabs", "Pearl Companies", "WillHire", "Career Mentors", "InterEx Group",
-                              "ExecutivePlacements.com", "Kforce Inc", "RightClick", "Staffxpert", "Aegistech", "Syndicatebleu", "Mercor", "Brooksource",
-                              "James Search Group", "Hunter Bond", "ImpetusIT", "Active Consulting Services LLC", "Crossing Hurdles", "mroads", "kadence",
-                              "Lorven Technologies Inc.", "Piper Companies", "Jobgether", "Patriot Talent Solutions", "Peak Partners", "R2 Global",
-                              "Kuvaka Tech", "ConsultNet Technology Services and Solutions", "Green Key Resources", "BrightHire Search Partners",
-                              "Talener", "Harnham", "Korn Ferry", "Codeworks IT Careers", "Recruiting from Scratch", "Akkodis Group Nordics", "ScaleneWorks INC",
-                              "Career Search Partners", "Primary Talent Partners", "WorkinVirtual", "AI Jobs", "Reval Recruiting", "hackajob", "Franklin Fitch",
-                              "Hatch Talent", "Ringside Talent", "RemoteHunter", "Hire Talent", "Orion Groups", "Ingenuity Staffing", "Best Job Tool",
-                              "Sud Recruiting", "William and William Recruiting", "Lawrence Harvey", "Wiraa", "BCforward", "The Ash Group", "TRX", "Serable",
-                              "Hirenza", "S Piper Staffing LLC", "Selby Jennings", "Kellton", "matcha.fm", "Insight Global", "DRUM UPSKILL", "Invovia",
-                              "Colossus Technologies Group", "Link Technical Talent", "Cornerstone Global Partners (CGP Group)", "Synergy Interactive",
-                              "JSR Tech Consulting", "micro1", "Landing Point", "My IT LLC", "G2i Inc.", "DS Technologies Inc", "Emerald Resource Group",
-                              "Revolution Technologies", "HIRECLOUT", "Understanding Recruitment", "Great Value Hiring", "Aquent", "TALENT Software Services",
-                              "Underdog.io -Apply to top tech jobs in 60 seconds. A place where companies apply to you", "SoTalent", "SheCruit LLC",
-                              "HelixRecruit", "SME Careers", "KeyPartners", "LumiQ Solutions", "Tential Solutions", "Meta Resources Group", "BioTalent",
-                              "Connecticut Innovations", "DRISHTICON Inc", "Dhara Consulting Group", "Sibitalent Corp", "Harrison Clarke", "Tech Consulting",
-                              "ReleHelp", "NavitsPartners", "XpertDirect", "Blue Signal Search", "HirePower Staffing Solution", "Eleven Recruiting", "RRelocate",
-                              "Altitude Staffing", "RedRiver Systems, LLC", "TechLine Consulting", "Visionary Integration Professionals (VIP)", "OM GROUP INC.",
-                              "Innova Solutions", "Precision Technologies", "InfoVision Inc.", "Nigel Frank International", "Call For Referral", "Small Arc Inc",
-                              "Orbis Group", "Signify Technology", "Sancus Day", "Sastra Group", "Infoway Software", "Tata Consultancy Services (TCS)", "Calyptus",
-                              "Aimhire", "Revolut", "myGwork - LGBTQ+ Business Community", "Onward Search", "STAFFWORXS", "Blue Coding", "Osprey Software",
-                              "Code Compass 🧭", "PEAK Technical Staffing USA", "DRC Systems", "D24 Search", "Millennium Software and Staffing Inc", "Emma of Torre.ai",
-                              "The Recruiting Guy", "WTECH Search", "Stockford Recruitment", "Rainier Recruiting", "Orama Solutions", "AllSTEM Connections",
-                              "Paragon Alpha - Hedge Fund Talent Business", "Hired by Matrix, Inc", "OP Recruiting", "Radley James", "Actalent", "Pragmatike",
-                              "netPolarity, Inc. (Saicon Consultants, Inc.)", "Hiring Ritual Ltd", 'Catalyst Labs', "talents lab", "Coders Connect", "Hanalytica GmbH",
-                              "HireTalent - Staffing & Recruiting Firm", "HireCapital", "Discover International", "Hybrid Image Airbrush", "ClientMind Recruiting Inc.",
-                              "Talent Groups", "Strategic Staffing Solutions", "Phoenix Cyber", "Oho Group Ltd", "Alexander Technology Group", "Gini Talent",
-                              "Trust In SODA", "Reason", "Zafhires", "The Planet Group", "Taskify AI", "IDR, Inc.", "Lang Recruiting", "IT Associates", "Experis",
-                              "Dunhill Professional Search & Government Solutions", "ARA Talent Solutions", "iO Associates", "Compri Consulting", "Career Renew",
-                              "Leadenhall Search & Selection", "Generis Tek Inc", "Pentasia", "INSPYR Solutions", "Presidential Staffing Solutions, LLC", "Topskill.io",
-                              "Medical Engineering Consultants (MEC)", "HRCap, Inc.", "Compunnel Inc.", "Danson Solutions", "TransPerfect", "Alpha", "X4 Engineering",
-                              "Sigma Group", "Remote Ascent",  "Cullerton Group", "Foxley Talent", "som3 Recruitment", "primehire", "Haystack", "{devlogic}",
-                              "Simplify Recruiting", "RecruitSeq", "Accelon Consulting"]
+    EXCLUDE_COMPANIES_LIST = ["Jobright.ai", "Jobs via Dice", "Lensa"]
     RESULTS_WANTED = 200
     SITES_TO_SEARCH = ["indeed", "linkedin"]
 
