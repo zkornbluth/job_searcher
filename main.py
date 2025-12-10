@@ -53,7 +53,7 @@ def run_my_searches(search_term: str, hours_old = 24) -> pd.DataFrame:
                           "President", "Expert", "Distinguished", "CEO"]
     # Read in exclude companies from file
     with open("exclude_companies_list.txt", "r") as f:
-        lines = f.readlines
+        lines = f.readlines()
         EXCLUDE_COMPANIES_LIST = [line.strip() for line in lines]
     RESULTS_WANTED = 200
     SITES_TO_SEARCH = ["indeed", "linkedin"]
