@@ -3,3 +3,4 @@ jobs*
 __pycache__
 *.log
 seen_linkedin_ids.txt
+exclude_companies_list.txt

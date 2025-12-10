@@ -49,9 +49,12 @@ def run_my_searches(search_term: str, hours_old = 24) -> pd.DataFrame:
     :return: Pandas dataframe containing job data
     '''
 
-    EXCLUDE_TERMS_LIST = ["Senior", "Sr", "Lead", "Founding", "Founder", "Cofounder", "III", "IV", "Manager", "Staff", "Principal", "VP", "Director", 
+    EXCLUDE_TERMS_LIST = ["Senior", "Sr", "Lead", "Founding", "Founder", "Cofounder", "III", "IV", "Manager", "Staff", "Principal", "Principle", "VP", "Director", 
                           "President", "Expert", "Distinguished", "CEO"]
-    EXCLUDE_COMPANIES_LIST = ["Jobright.ai", "Jobs via Dice", "Lensa"]
+    # Read in exclude companies from file
+    with open("exclude_companies_list.txt", "r") as f:
+        lines = f.readlines
+        EXCLUDE_COMPANIES_LIST = [line.strip() for line in lines]
     RESULTS_WANTED = 200
     SITES_TO_SEARCH = ["indeed", "linkedin"]
 
