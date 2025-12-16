@@ -48,12 +48,11 @@ def run_my_searches(search_term: str, hours_old = 24) -> pd.DataFrame:
     Defines my filters for terms/companies to exclude and runs scrape_and_filter_jobs for NYC, Boston, Westport CT, White Plains, and remote (USA)
     :return: Pandas dataframe containing job data
     '''
-
-    EXCLUDE_TERMS_LIST = ["Senior", "Sr", "Lead", "Founding", "Founder", "Cofounder", "III", "IV", "Manager", "Staff", "Principal", "Principle", "VP", "Director", 
-                          "President", "Expert", "Distinguished", "CEO"]
-    # Read in exclude companies from file
-    with open("exclude_companies_list.txt", "r") as f:
-        lines = f.readlines()
+    with open("exclude_terms_list.txt", "r") as f1:
+        lines = f1.readlines()
+        EXCLUDE_TERMS_LIST = [line.strip() for line in lines]
+    with open("exclude_companies_list.txt", "r") as f2:
+        lines = f2.readlines()
         EXCLUDE_COMPANIES_LIST = [line.strip() for line in lines]
     RESULTS_WANTED = 200
     SITES_TO_SEARCH = ["indeed", "linkedin"]

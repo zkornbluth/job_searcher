@@ -4,3 +4,4 @@ __pycache__
 *.log
 seen_linkedin_ids.txt
 exclude_companies_list.txt
+exclude_terms_list.txt
