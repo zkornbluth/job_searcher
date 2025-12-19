@@ -115,7 +115,7 @@ def run_my_searches(search_term: str, hours_old = 24) -> pd.DataFrame:
     )
 
     jobs_remote = scrape_and_filter_jobs(
-        site_name=["linkedin"],
+        site_name=["linkedin"], # Remote search only on LinkedIn - Indeed has issues
         search_term=search_term,
         location="United States",
         is_remote=True,
@@ -145,21 +145,25 @@ logging.basicConfig(
 try:
     hours_lookback = int(sys.argv[1])
     logging.info(f"Looking for jobs in the last {hours_lookback} hours")
-    jobs_se = run_my_searches("Software Engineer", hours_lookback)
-    jobs_pd = run_my_searches("Python Developer", hours_lookback)
-    jobs_pr = run_my_searches("Computer Programmer", hours_lookback)
-    jobs_tb = run_my_searches("Tableau Analyst", hours_lookback)
-    jobs = pd.concat([jobs_se, jobs_pd, jobs_pr, jobs_tb], axis=0)
+
+    # Load search terms from file
+    with open("search_terms_list.txt", "r") as f:
+        lines = f.readlines()
+        search_terms_list = [line.strip() for line in lines]
+
+    search_results = []
+    for term in search_terms_list:
+        term_jobs = run_my_searches(term, hours_lookback)
+        search_results.append(term_jobs)
+
+    jobs = pd.concat(search_results, axis=0)[['site', 'company', 'location', 'title', 'job_url', 'date_posted', 'job_type', 'description']].copy().drop_duplicates()
     
     seen_file = os.path.join(script_dir, "seen_linkedin_ids.txt")
-    logging.info(f"Total jobs found: {len(jobs)}")
+    logging.info(f"Total unique jobs found: {len(jobs)}")
     filtered_jobs = filter_seen_linkedin_jobs(jobs, seen_file)
     logging.info(f"Filtered {len(jobs) - len(filtered_jobs)} LinkedIn jobs that have appeared before.")
 
-    # Columns we want: site, job_url, title, company, location, job_type, description, date_posted
-    output_jobs = filtered_jobs[['site', 'company', 'location', 'title', 'job_url', 'date_posted', 'job_type', 'description']].copy().drop_duplicates()
-
-    csv_file = export_jobs_to_csv(output_jobs)
+    csv_file = export_jobs_to_csv(filtered_jobs)
     logging.info(f"Job scraping completed. Saved to {csv_file}")
     logging.info(" ")
 except Exception as e:

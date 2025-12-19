@@ -5,3 +5,4 @@ __pycache__
 seen_linkedin_ids.txt
 exclude_companies_list.txt
 exclude_terms_list.txt
+search_terms_list.txt
