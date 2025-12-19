@@ -160,7 +160,7 @@ try:
     
     seen_file = os.path.join(script_dir, "seen_linkedin_ids.txt")
     logging.info(f"Total unique jobs found: {len(jobs)}")
-    filtered_jobs = filter_seen_linkedin_jobs(jobs, seen_file)
+    filtered_jobs = filter_seen_linkedin_jobs(jobs, seen_file).drop(columns=["linkedin_id"])
     logging.info(f"Filtered {len(jobs) - len(filtered_jobs)} LinkedIn jobs that have appeared before.")
 
     csv_file = export_jobs_to_csv(filtered_jobs)
