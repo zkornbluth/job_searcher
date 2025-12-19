@@ -48,12 +48,6 @@ def run_my_searches(search_term: str, hours_old = 24) -> pd.DataFrame:
     Defines my filters for terms/companies to exclude and runs scrape_and_filter_jobs for NYC, Boston, Westport CT, White Plains, and remote (USA)
     :return: Pandas dataframe containing job data
     '''
-    with open("exclude_terms_list.txt", "r") as f1:
-        lines = f1.readlines()
-        EXCLUDE_TERMS_LIST = [line.strip() for line in lines]
-    with open("exclude_companies_list.txt", "r") as f2:
-        lines = f2.readlines()
-        EXCLUDE_COMPANIES_LIST = [line.strip() for line in lines]
     RESULTS_WANTED = 200
     SITES_TO_SEARCH = ["indeed", "linkedin"]
 
@@ -146,9 +140,15 @@ try:
     hours_lookback = int(sys.argv[1])
     logging.info(f"Looking for jobs in the last {hours_lookback} hours")
 
-    # Load search terms from file
-    with open("search_terms_list.txt", "r") as f:
-        lines = f.readlines()
+    # Load files
+    with open("exclude_terms_list.txt", "r") as f1:
+        lines = f1.readlines()
+        EXCLUDE_TERMS_LIST = [line.strip() for line in lines]
+    with open("exclude_companies_list.txt", "r") as f2:
+        lines = f2.readlines()
+        EXCLUDE_COMPANIES_LIST = [line.strip() for line in lines]
+    with open("search_terms_list.txt", "r") as f3:
+        lines = f3.readlines()
         search_terms_list = [line.strip() for line in lines]
 
     search_results = []
