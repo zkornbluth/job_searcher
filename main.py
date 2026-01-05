@@ -137,7 +137,7 @@ logging.basicConfig(
 )
 
 try:
-    hours_lookback = int(sys.argv[1])
+    hours_lookback = int(sys.argv[1]) if len(sys.argv) > 1 else 24
     logging.info(f"Looking for jobs in the last {hours_lookback} hours")
 
     # Load files
